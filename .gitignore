@@ -18,3 +18,4 @@ imgui.ini
 *.egg-info
 *.mp4
 Pick.gif
+split_git.py

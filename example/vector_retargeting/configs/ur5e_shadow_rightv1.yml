@@ -12,8 +12,7 @@ retargeting:
     'shoulder_pan_joint',    # 基座旋转
     'shoulder_lift_joint',   # 肩部俯仰
     'elbow_joint',           # 肘部
-    #'elbow_joint',           # 肘部
-    #'wrist_1_joint',         # 腕部1
+    'wrist_1_joint',         # 腕部1
     'wrist_2_joint',         # 腕部2
     'wrist_3_joint',         # 腕部3
     # Shadow Hand 手腕关节 (2 DOF)
@@ -63,9 +62,9 @@ retargeting:
     "wrist",     # 手腕位置
 
     # 手腕姿态向量 (2个)
-    "thhub",        # 拇指掌指关节
-    "ffknuckle",   # 食指掌指关节
-    "lfknuckle",   # 小指掌指关节
+    "thtip",        # 拇指掌指关节
+    "fftip",   # 食指掌指关节
+    "lftip",   # 小指掌指关节
 
     #掌指关节
     "thhub", "ffknuckle", "mfknuckle", "rfknuckle", "lfknuckle",
@@ -92,7 +91,7 @@ retargeting:
     # origin_indices (9个向量的起点)
     [0, 1, 1,1,1 , 3, 3, 3, 3, 3  ,  5 ,8,12,16,20,    ], # 1, 1,3, 3, 3, 3, 3, 3, 3 
     # task_indices (9个向量的终点)
-    [1, 2,5, 8, 20 ,   5 ,8,12,16,20,    7, 11, 15, 19, 23] #8, 12, 8, 12,7, 11, 15, 19, 23
+    [1, 2,7, 11, 23 ,   5 ,8,12,16,20,    7, 11, 15, 19, 23] #8, 12, 8, 12,7, 11, 15, 19, 23
   ]
   # 解释:
   # 向量0: SHOULDER(0) → ELBOW(1)        - 上臂

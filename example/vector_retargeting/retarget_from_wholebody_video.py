@@ -244,7 +244,7 @@ def main(
         ref_value = joint_pos[task_indices, :] - joint_pos[origin_indices, :]
 
         # Execute retargeting
-        qpos = retargeting.retarget(ref_value, fixed_qpos=np.array([ 0,0,0]))
+        qpos = retargeting.retarget(ref_value, fixed_qpos=np.array([ 0,0]))
         robot.set_qpos(qpos[retargeting_to_sapien])
 
         for _ in range(2):

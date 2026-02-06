@@ -12,6 +12,16 @@ This repository contains experiments and utilities for **whole-body (including h
 - **Retargeting optimization**: Map human-side constraints (vectors / joints) into the robot joint space and output robot joint targets.
 - **Visualization & debugging**: 2D video preview and 3D (VPython) coordinate / skeleton visualization scripts.
 
+## Hand Retargeting Results (GIF)
+
+| Part 1 | Part 2 |
+| --- | --- |
+| ![](example/vector_retargeting/result/compressed_video_part_1.gif) | ![](example/vector_retargeting/result/compressed_video_part_2.gif) |
+
+| Part 3 | Part 4 |
+| --- | --- |
+| ![](example/vector_retargeting/result/compressed_video_part_3.gif) | ![](example/vector_retargeting/result/compressed_video_part_4.gif) |
+
 ## Repository Layout (High Level)
 
 - `example/vector_retargeting/`: Example scripts and assets (e.g., wholebody video retargeting pipeline).
