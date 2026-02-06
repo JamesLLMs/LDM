@@ -1,0 +1,83 @@
+{
+  "description": "人体关节长度配置 - 单位：米（标准化参考值）",
+  "version": "1.1",
+
+  "coordinate_transform": {
+    "description": "人体坐标系到机械臂坐标系的旋转变换",
+    "rotation_matrix": [
+      [-1.0, 0.0, 0.0],
+      [0.0, -1.0, 0.0],
+      [0.0, 0.0, 1.0]
+    ],
+    "rotation_quaternion": [0.0, 0.0, 0.0, 1.0],
+    "notes": "绕Z轴旋转180度，将人体坐标系(quat: 1,0,0,0)对齐到机械臂坐标系(quat: 0,0,0,1)"
+  },
+
+  "right_arm": {
+    "SHOULDER_TO_ELBOW": 0.42,
+    "ELBOW_TO_WRIST": 0.66,
+
+    "WRIST_TO_THUMB_CMC": 0.038,
+    "THUMB_CMC_TO_THUMB_MCP": 0.055,
+    "THUMB_MCP_TO_THUMB_IP": 0.042,
+    "THUMB_IP_TO_THUMB_TIP": 0.030,
+
+    "WRIST_TO_INDEX_FINGER_MCP": 0.095,
+    "INDEX_FINGER_MCP_TO_INDEX_FINGER_PIP": 0.060,
+    "INDEX_FINGER_PIP_TO_INDEX_FINGER_DIP": 0.045,
+    "INDEX_FINGER_DIP_TO_INDEX_FINGER_TIP": 0.028,
+
+    "INDEX_FINGER_MCP_TO_MIDDLE_FINGER_MCP": 0.020,
+    "MIDDLE_FINGER_MCP_TO_MIDDLE_FINGER_PIP": 0.065,
+    "MIDDLE_FINGER_PIP_TO_MIDDLE_FINGER_DIP": 0.048,
+    "MIDDLE_FINGER_DIP_TO_MIDDLE_FINGER_TIP": 0.030,
+
+    "MIDDLE_FINGER_MCP_TO_RING_FINGER_MCP": 0.018,
+    "RING_FINGER_MCP_TO_RING_FINGER_PIP": 0.062,
+    "RING_FINGER_PIP_TO_RING_FINGER_DIP": 0.044,
+    "RING_FINGER_DIP_TO_RING_FINGER_TIP": 0.027,
+
+    "RING_FINGER_MCP_TO_PINKY_MCP": 0.016,
+    "WRIST_TO_PINKY_MCP": 0.088,
+    "PINKY_MCP_TO_PINKY_PIP": 0.050,
+    "PINKY_PIP_TO_PINKY_DIP": 0.038,
+    "PINKY_DIP_TO_PINKY_TIP": 0.022
+  },
+  "left_arm": {
+    "SHOULDER_TO_ELBOW": 0.425,
+    "ELBOW_TO_WRIST": 0.516,
+
+    "WRIST_TO_THUMB_CMC": 0.038,
+    "THUMB_CMC_TO_THUMB_MCP": 0.055,
+    "THUMB_MCP_TO_THUMB_IP": 0.042,
+    "THUMB_IP_TO_THUMB_TIP": 0.030,
+
+    "WRIST_TO_INDEX_FINGER_MCP": 0.095,
+    "INDEX_FINGER_MCP_TO_INDEX_FINGER_PIP": 0.060,
+    "INDEX_FINGER_PIP_TO_INDEX_FINGER_DIP": 0.045,
+    "INDEX_FINGER_DIP_TO_INDEX_FINGER_TIP": 0.028,
+
+    "INDEX_FINGER_MCP_TO_MIDDLE_FINGER_MCP": 0.020,
+    "MIDDLE_FINGER_MCP_TO_MIDDLE_FINGER_PIP": 0.065,
+    "MIDDLE_FINGER_PIP_TO_MIDDLE_FINGER_DIP": 0.048,
+    "MIDDLE_FINGER_DIP_TO_MIDDLE_FINGER_TIP": 0.030,
+
+    "MIDDLE_FINGER_MCP_TO_RING_FINGER_MCP": 0.018,
+    "RING_FINGER_MCP_TO_RING_FINGER_PIP": 0.062,
+    "RING_FINGER_PIP_TO_RING_FINGER_DIP": 0.044,
+    "RING_FINGER_DIP_TO_RING_FINGER_TIP": 0.027,
+
+    "RING_FINGER_MCP_TO_PINKY_MCP": 0.016,
+    "WRIST_TO_PINKY_MCP": 0.088,
+    "PINKY_MCP_TO_PINKY_PIP": 0.050,
+    "PINKY_PIP_TO_PINKY_DIP": 0.038,
+    "PINKY_DIP_TO_PINKY_TIP": 0.022
+  },
+
+
+  "notes": {
+    "reference": "这些是成年人体的平均长度，单位为米",
+    "usage": "用于URDF坐标的长度归一化，确保检测结果不受视角变化影响",
+    "how_to_normalize": "根据关节连接关系，计算当前距离 d = sqrt((x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2)，然后应用缩放因子：target_length / current_length"
+  }
+}

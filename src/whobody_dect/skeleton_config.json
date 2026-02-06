@@ -1,0 +1,49 @@
+{
+  "pose_joints": {
+    "NOSE": 0, "LEFT_EYE_INNER": 1, "LEFT_EYE": 2, "LEFT_EYE_OUTER": 3,
+    "RIGHT_EYE_INNER": 4, "RIGHT_EYE": 5, "RIGHT_EYE_OUTER": 6, "LEFT_EAR": 7,
+    "RIGHT_EAR": 8, "MOUTH_LEFT": 9, "MOUTH_RIGHT": 10, "LEFT_SHOULDER": 11,
+    "RIGHT_SHOULDER": 12, "LEFT_ELBOW": 13, "RIGHT_ELBOW": 14, "LEFT_WRIST": 15,
+    "RIGHT_WRIST": 16, "LEFT_PINKY": 17, "RIGHT_PINKY": 18, "LEFT_INDEX": 19,
+    "RIGHT_INDEX": 20, "LEFT_THUMB": 21, "RIGHT_THUMB": 22, "LEFT_HIP": 23,
+    "RIGHT_HIP": 24, "LEFT_KNEE": 25, "RIGHT_KNEE": 26, "LEFT_ANKLE": 27,
+    "RIGHT_ANKLE": 28, "LEFT_HEEL": 29, "RIGHT_HEEL": 30, "LEFT_FOOT_INDEX": 31,
+    "RIGHT_FOOT_INDEX": 32
+  },
+  "hand_joints": {
+    "WRIST": 0, "THUMB_CMC": 1, "THUMB_MCP": 2, "THUMB_IP": 3, "THUMB_TIP": 4,
+    "INDEX_FINGER_MCP": 5, "INDEX_FINGER_PIP": 6, "INDEX_FINGER_DIP": 7, "INDEX_FINGER_TIP": 8,
+    "MIDDLE_FINGER_MCP": 9, "MIDDLE_FINGER_PIP": 10, "MIDDLE_FINGER_DIP": 11, "MIDDLE_FINGER_TIP": 12,
+    "RING_FINGER_MCP": 13, "RING_FINGER_PIP": 14, "RING_FINGER_DIP": 15, "RING_FINGER_TIP": 16,
+    "PINKY_MCP": 17, "PINKY_PIP": 18, "PINKY_DIP": 19, "PINKY_TIP": 20
+  },
+  "pose_connections": [
+    [15, 21], [16, 20], [18, 20], [3, 7], [14, 16], [23, 25], [28, 30],
+    [11, 23], [27, 31], [6, 8], [15, 17], [24, 26], [16, 22], [4, 5],
+    [5, 6], [29, 31], [12, 24], [23, 24], [0, 1], [9, 10], [1, 2],
+    [0, 4], [11, 13], [30, 32], [28, 32], [15, 19], [16, 18], [25, 27],
+    [26, 28], [12, 14], [17, 19], [2, 3], [11, 12], [27, 29], [13, 15]
+  ],
+  "hand_connections": [
+    [0, 1], [1, 2], [2, 3], [3, 4],
+    [0, 5], [5, 6], [6, 7], [7, 8],
+    [5, 9], [9, 10], [10, 11], [11, 12],
+    [9, 13], [13, 14], [14, 15], [15, 16],
+    [13, 17], [0, 17], [17, 18], [18, 19], [19, 20]
+  ],
+  "offsets": {
+    "Left": 100,
+    "Right": 200
+  },
+  "replacement_rules": {
+    "15": {"target_hand": "Left", "target_joint_id": 0, "delete_pose_wrist": true},
+    "16": {"target_hand": "Right", "target_joint_id": 0, "delete_pose_wrist": true},
+    "17": {"target_hand": "Left", "delete": true},
+    "19": {"target_hand": "Left", "delete": true},
+    "21": {"target_hand": "Left", "delete": true},
+    "18": {"target_hand": "Right", "delete": true},
+    "20": {"target_hand": "Right", "delete": true},
+    "22": {"target_hand": "Right", "delete": true}
+  },
+  "filters": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 17, 18, 19, 20, 21, 22,  25, 26, 27, 28, 29, 30, 31, 32]
+}

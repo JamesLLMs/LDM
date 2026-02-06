@@ -1,0 +1,118 @@
+retargeting:
+  type: vector
+  urdf_path: assembly/ur5e_shadow/ur5e_shadow_right_hand_glb.urdf
+
+  # ============================================================
+  # 目标关节名称
+  # ============================================================
+  # UR5e机械臂 (6 DOF) + Shadow Hand (24 DOF) = 30 DOF
+  # 注意：Shadow Hand 有很多关节，这里选择主要的控制关节
+  target_joint_names: [
+    # UR5e 机械臂关节 (6 DOF)
+    'shoulder_pan_joint',    # 基座旋转
+    'shoulder_lift_joint',   # 肩部俯仰
+    'elbow_joint',           # 肘部
+    #'elbow_joint',           # 肘部
+    #'wrist_1_joint',         # 腕部1
+    'wrist_2_joint',         # 腕部2
+    'wrist_3_joint',         # 腕部3
+    # Shadow Hand 手腕关节 (2 DOF)
+    # 'WRJ1',                  # 手腕翻滚
+    # 'WRJ2',                  # 手腕俯仰
+    # 拇指关节 (5 DOF)
+    'THJ1', 'THJ2', 'THJ3', 'THJ4', 'THJ5',
+    # 食指关节 (4 DOF)
+    'FFJ1', 'FFJ2', 'FFJ3', 'FFJ4',
+    # 中指关节 (4 DOF)
+    'MFJ1', 'MFJ2', 'MFJ3', 'MFJ4',
+    # 无名指关节 (4 DOF)
+    'RFJ1', 'RFJ2', 'RFJ3', 'RFJ4',
+    # 小指关节 (5 DOF)
+    'LFJ1', 'LFJ2', 'LFJ3', 'LFJ4', 'LFJ5'
+  ]
+
+  # ============================================================
+  # 向量定义：origin_link → task_link
+  # ============================================================
+  # 分为三组向量：
+  # 1. 手臂向量 (2个): 用于求解机械臂前3个自由度
+  # 2. 手腕姿态向量 (2个): 用于求解机械臂末端3个自由度 + 手腕2个自由度
+  # 3. 手指向量 (5个): 用于求解手指关节
+
+  target_origin_link_names: [
+    # 手臂向量 (2个)
+    "shoulder_virtual" ,   # 肩膀位置
+    "elbow_virtual",     # 肩膀→手腕
+
+    # 手腕姿态向量 (2个) - 使用掌指关节定义手腕朝向
+    "elbow_virtual",     # 肘部-> 掌指关节 食指
+    "elbow_virtual",     # 肘部-> 掌指关节  中指
+    "elbow_virtual",     # 肘部-> 掌指关节  拇指
+
+
+    #手腕向量 (5个)
+    "wrist", "wrist", "wrist", "wrist", "wrist",
+    #掌指关节
+    "thhub", "ffknuckle", "mfknuckle", "rfknuckle", "lfknuckle",
+
+  ]
+
+  target_task_link_names: [
+    # 手臂向量 (2个)
+    "elbow_virtual" ,    # 肘部位置
+    "wrist",     # 手腕位置
+
+    # 手腕姿态向量 (2个)
+    "thhub",        # 拇指掌指关节
+    "ffknuckle",   # 食指掌指关节
+    "lfknuckle",   # 小指掌指关节
+
+    #掌指关节
+    "thhub", "ffknuckle", "mfknuckle", "rfknuckle", "lfknuckle",
+
+    # 指尖向量 (5个)
+    "thtip", "fftip", "mftip", "rftip", "lftip"
+  ]
+
+  # ============================================================
+  # 人体关键点索引映射
+  # ============================================================
+  # 格式: [[origin_indices], [task_indices]]
+  # 每个向量 = joint_pos[task_index] - joint_pos[origin_index]
+  #
+  # 关键点索引定义:
+  # 0: SHOULDER, 1: ELBOW, 2: WRIST, 3: HAND_WRIST
+  # 4: THUMB_CMC, 5: THUMB_MCP, 6: THUMB_IP, 7: THUMB_TIP
+  # 8: INDEX_MCP, 9: INDEX_PIP, 10: INDEX_DIP, 11: INDEX_TIP
+  # 12: MIDDLE_MCP, 13: MIDDLE_PIP, 14: MIDDLE_DIP, 15: MIDDLE_TIP
+  # 16: RING_MCP, 17: RING_PIP, 18: RING_DIP, 19: RING_TIP
+  # 20: PINKY_MCP, 21: PINKY_PIP, 22: PINKY_DIP, 23: PINKY_TIP
+
+  target_link_human_indices: [
+    # origin_indices (9个向量的起点)
+    [0, 1, 1,1,1 , 3, 3, 3, 3, 3  ,  5 ,8,12,16,20,    ], # 1, 1,3, 3, 3, 3, 3, 3, 3 
+    # task_indices (9个向量的终点)
+    [1, 2,5, 8, 20 ,   5 ,8,12,16,20,    7, 11, 15, 19, 23] #8, 12, 8, 12,7, 11, 15, 19, 23
+  ]
+  # 解释:
+  # 向量0: SHOULDER(0) → ELBOW(1)        - 上臂
+  # 向量1: ELBOW(1) → WRIST(2)           - 前臂
+  # 向量2: HAND_WRIST(3) → INDEX_MCP(8)  - 手腕朝向1
+  # 向量3: HAND_WRIST(3) → MIDDLE_MCP(12)- 手腕朝向2
+  # 向量4: HAND_WRIST(3) → THUMB_TIP(7)  - 拇指
+  # 向量5: HAND_WRIST(3) → INDEX_TIP(11) - 食指
+  # 向量6: HAND_WRIST(3) → MIDDLE_TIP(15)- 中指
+  # 向量7: HAND_WRIST(3) → RING_TIP(19)  - 无名指
+  # 向量8: HAND_WRIST(3) → PINKY_TIP(23) - 小指
+
+  # ============================================================
+  # 优化参数
+  # ============================================================
+  scaling_factor: 1.0
+
+  # Huber损失参数
+  huber_delta: 0.02
+  normal_delta: 0.004
+
+  # 低通滤波器参数 (越小越平滑，但延迟越大)
+  low_pass_alpha: 0.15
