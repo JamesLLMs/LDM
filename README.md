@@ -2,7 +2,7 @@
 
 ![Demo](Pick.gif)
 
-This repository contains experiments and utilities for **whole-body (including hands) keypoint detection** and **motion retargeting** from **monocular video or a live camera**. It estimates upper-body and hand keypoints, applies multi-stage coordinate transforms, and retargets the motion to a robot **URDF** model, with visualization and debugging tools.
+This repository contains experiments and utilities for **Arms (including hands) keypoint detection** and **motion retargeting** from **monocular video or a live camera**. It estimates upper-body and hand keypoints, applies multi-stage coordinate transforms, and retargets the motion to a robot **URDF** model, with visualization and debugging tools.
 
 ## Features
 
