@@ -1,4 +1,4 @@
-# LDM (Wholebody Retargeting Project)
+# LDM (Lightweight Dexterous Motion)
 
 ![Demo](Pick.gif)
 
